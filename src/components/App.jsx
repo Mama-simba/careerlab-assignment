@@ -27,15 +27,18 @@ export function App() {
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
 			<SearchForm onSearchSubmit={onSearchSubmit} />
-			{results?.map((result) => {
-				return (
-					<Results
-						key={result.id}
-						name={result.artist_title}
-						title={result.title}
-					/>
-				);
-			})}
+			<ul>
+				{results?.map((result) => {
+					return (
+						<Results
+							key={result.id}
+							name={result.artist_title}
+							title={result.title}
+						/>
+					);
+				})}
+			</ul>
+
 			<Footer />
 		</div>
 	);
