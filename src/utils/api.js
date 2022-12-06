@@ -43,7 +43,9 @@ export function searchArtworks(query) {
 
 	return fetch(requestUrl, { headers }).then((res) => {
 		if (res.ok) {
-			return res.json();
+			console.log(res.json);
+
+			// return res.json();
 		}
 	});
 }
