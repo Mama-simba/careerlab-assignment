@@ -1,8 +1,10 @@
 import './App.css';
+import { useState } from 'react';
 
 import { searchArtworks } from '../utils/api';
 import { SearchForm } from './SearchForm';
 import { Footer } from './Footer';
+import Results from './Results';
 
 export function App() {
 	function onSearchSubmit(query) {
@@ -13,7 +15,7 @@ export function App() {
 		// our UI, we need to make real requests!
 		// @see: ./src/uitls/api.js
 		searchArtworks(query).then((json) => {
-			console.log(json);
+			console.log(json.data);
 		});
 	}
 
