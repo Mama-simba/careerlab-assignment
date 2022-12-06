@@ -1,8 +1,15 @@
-export default function Results({ name, title }) {
+export default function Results({ name, title, image, altText, showImage }) {
 	return (
-		<div className="Results">
-			<h2>Title: {title}</h2>
-			<h2>Artist: {name}</h2>
-		</div>
+		<li className="Results">
+			<p>Title: {title}</p>
+			<p>Artist: {name}</p>
+			<button
+				onClick={() => {
+					showImage({ image, altText });
+				}}
+			>
+				Show details
+			</button>
+		</li>
 	);
 }
