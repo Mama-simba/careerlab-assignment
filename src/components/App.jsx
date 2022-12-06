@@ -10,6 +10,7 @@ import ImageDetailsPage from './ImageDetailsPage';
 export function App() {
 	const [results, setResults] = useState();
 	const [imageResult, setImageResult] = useState();
+	const [hide, setHide] = useState(false);
 
 	function onSearchSubmit(query) {
 		// Search for the users's query.
@@ -25,33 +26,44 @@ export function App() {
 	}
 
 	function showImage({ image, altText }) {
+		setHide(true);
 		setImageResult({
 			image: image,
 			altText: altText,
 		});
 	}
 
+	function handleGoBack() {
+		setHide(false);
+	}
+
 	return (
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
-			<SearchForm onSearchSubmit={onSearchSubmit} />
-			<ul>
-				{results?.map((result) => {
-					return (
-						<Results
-							key={result.id}
-							id={result.id}
-							name={result.artist_title}
-							title={result.title}
-						/>
-					);
-				})}
-			</ul>
-			<ImageDetailsPage
-				altText={imageResult.altText}
-				image={imageResult.image}
-			/>
 
+			{!hide ? (
+				<>
+					<SearchForm onSearchSubmit={onSearchSubmit} />
+					<ul>
+						{results?.map((result) => {
+							return (
+								<Results
+									key={result.id}
+									id={result.id}
+									name={result.artist_title}
+									title={result.title}
+								/>
+							);
+						})}
+					</ul>
+				</>
+			) : (
+				<ImageDetailsPage
+					altText={imageResult.altText}
+					handleGoBack={handleGoBack}
+					image={imageResult.image}
+				/>
+			)}
 			<Footer />
 		</div>
 	);
