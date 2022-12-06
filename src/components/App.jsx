@@ -5,6 +5,7 @@ import { searchArtworks } from '../utils/api';
 import { SearchForm } from './SearchForm';
 import { Footer } from './Footer';
 import Results from './Results';
+import ImageDetailsPage from './ImageDetailsPage';
 
 export function App() {
 	const [results, setResults] = useState();
