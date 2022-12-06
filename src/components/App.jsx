@@ -49,8 +49,11 @@ export function App() {
 							return (
 								<Results
 									key={result.id}
+									altText={result.thumbnail.alt_text}
 									id={result.id}
+									image={result.image_id}
 									name={result.artist_title}
+									showImage={showImage}
 									title={result.title}
 								/>
 							);
