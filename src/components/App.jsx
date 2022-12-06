@@ -9,6 +9,7 @@ import ImageDetailsPage from './ImageDetailsPage';
 
 export function App() {
 	const [results, setResults] = useState();
+	const [imageResult, setImageResult] = useState();
 
 	function onSearchSubmit(query) {
 		// Search for the users's query.
@@ -23,6 +24,13 @@ export function App() {
 		});
 	}
 
+	function showImage({ image, altText }) {
+		setImageResult({
+			image: image,
+			altText: altText,
+		});
+	}
+
 	return (
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
@@ -32,12 +40,17 @@ export function App() {
 					return (
 						<Results
 							key={result.id}
+							id={result.id}
 							name={result.artist_title}
 							title={result.title}
 						/>
 					);
 				})}
 			</ul>
+			<ImageDetailsPage
+				altText={imageResult.altText}
+				image={imageResult.image}
+			/>
 
 			<Footer />
 		</div>
